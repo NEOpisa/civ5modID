@@ -47,18 +47,19 @@ $velho = Join-Path $dlc $pasta
 if (Test-Path $velho) { Remove-Item $velho -Recurse -Force }
 $xp2 = Join-Path $dlc "Expansion2"
 $pkg = Join-Path $xp2 "Expansion2.civ5pkg"
-if (-not (Test-Path $pkg)) {
-	Write-Host "Brave New World nao encontrado em: $xp2"
-	exit 1
-}
 $trocados = @("UI\InGame\Popups\SocialPolicyPopup.lua", "UI\InGame\Popups\SocialPolicyPopup.xml", "UI\InGame\WorldView\DiploCorner.lua", "UI\InGame\InGame.xml")
 $bak = Join-Path $xp2 "nvg_original"
-if (Test-Path $bak) {
-	foreach ($f in $trocados) {
-		$o = Join-Path $bak ((Split-Path $f -Leaf) + ".orig")
-		if (Test-Path $o) { Copy-Item $o (Join-Path $xp2 $f) -Force }
-	}
-	Copy-Item (Join-Path $bak "Expansion2.civ5pkg.orig") $pkg -Force
+function DoMod($arq) { (Test-Path $arq) -and (Select-String -Path $arq -Pattern 'NVG|eradasideologias|"#N#"' -Quiet) }
+foreach ($f in $trocados) {
+	$alvo = Join-Path $xp2 $f
+	$o = Join-Path $bak ((Split-Path $f -Leaf) + ".orig")
+	if ((Test-Path $alvo) -and -not (DoMod $alvo)) { continue }
+	if ((Test-Path $o) -and -not (DoMod $o) -and (Test-Path (Split-Path $alvo -Parent))) { Copy-Item $o $alvo -Force; continue }
+	if (Test-Path $alvo) { Remove-Item $alvo -Force }
+}
+if ((Test-Path $pkg) -and (Select-String -Path $pkg -Pattern '<!-- NVG -->' -Quiet)) {
+	$linhas = [IO.File]::ReadAllLines($pkg) | Where-Object { $_ -notmatch '<!-- NVG -->' }
+	[IO.File]::WriteAllText($pkg, (($linhas -join "`r`n") + "`r`n"), (New-Object System.Text.UTF8Encoding $false))
 }
 foreach ($d in @((Join-Path $xp2 "Gameplay\XML\nvg"), (Join-Path $xp2 "UI\InGame\nvg"), $bak)) {
 	if (Test-Path $d) { Remove-Item $d -Recurse -Force }
@@ -66,6 +67,15 @@ foreach ($d in @((Join-Path $xp2 "Gameplay\XML\nvg"), (Join-Path $xp2 "UI\InGame
 if ($remover) {
 	Write-Host "Removido de: $xp2"
 } else {
+	$falta = @()
+	if (-not (Test-Path $pkg)) { $falta += "Expansion2.civ5pkg" }
+	foreach ($f in $trocados) { if (-not (Test-Path (Join-Path $xp2 $f))) { $falta += $f } }
+	if ($falta.Count -gt 0) {
+		Write-Host "O Brave New World esta incompleto ou nao instalado em: $xp2"
+		Write-Host ("Faltando: " + ($falta -join ", "))
+		Write-Host "Na Steam: Civilization V > Propriedades > DLC (marque o Brave New World) e depois Arquivos instalados > Verificar integridade. Depois rode este instalador de novo."
+		exit 1
+	}
 	New-Item -ItemType Directory -Path $bak | Out-Null
 	Copy-Item $pkg (Join-Path $bak "Expansion2.civ5pkg.orig")
 	foreach ($f in $trocados) { Copy-Item (Join-Path $xp2 $f) (Join-Path $bak ((Split-Path $f -Leaf) + ".orig")) }

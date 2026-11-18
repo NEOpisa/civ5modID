@@ -141,7 +141,12 @@ function NVG_Ajustar(player)
 end
 '''
 
-lua = open(os.path.join(JOGO, "socialpolicypopup.lua"), encoding="latin-1").read()
+def original(nome):
+    bak = os.path.join(JOGO, "..", "..", "..", "nvg_original", nome + ".orig")
+    return bak if os.path.exists(bak) else os.path.join(JOGO, nome)
+
+
+lua = open(original("socialpolicypopup.lua"), encoding="latin-1").read()
 lua = trocar(lua, 'include( "InstanceManager" );', TOPO)
 lua = trocar(lua, 'function GetPipe(branchType)\n\tlocal controlTable = nil;',
              'function GetPipe(branchType)\n\tlocal controlTable = nil;\n\tif NVG.variantes[branchType] then return NVG_CANO_NULO end\n\tbranchType = NVG_ORIGEM[branchType] or branchType;')
@@ -160,7 +165,7 @@ lua = trocar(lua, 'Controls.ToIdeologyTab:RegisterCallback(Mouse.eLClick, functi
              'LuaEvents.NVG_Atualizar.Add(function() if not ContextPtr:IsHidden() then UpdateDisplay() end end);')
 open(os.path.join(SAIDA, "SocialPolicyPopup.lua"), "w", encoding="utf-8").write(lua)
 
-xml = open(os.path.join(JOGO, "socialpolicypopup.xml"), encoding="latin-1").read()
+xml = open(original("socialpolicypopup.xml"), encoding="latin-1").read()
 for c in CLASSICAS:
     a = 'String="TXT_KEY_POLICY_BRANCH_%s_CAP" Font="TwCenMT20"' % c
     xml = trocar(xml, a, a + ' ID="NVGTitulo%d"' % IDS[c])

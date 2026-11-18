@@ -158,7 +158,9 @@ def textos(avisos):
 
 
 def ingame():
-    origem = os.path.join(JOGO, 'dlc', 'expansion2', 'ui', 'ingame', 'ingame.xml')
+    origem = os.path.join(JOGO, 'dlc', 'expansion2', 'nvg_original', 'ingame.xml.orig')
+    if not os.path.exists(origem):
+        origem = os.path.join(JOGO, 'dlc', 'expansion2', 'ui', 'ingame', 'ingame.xml')
     texto = open(origem, encoding='utf-8-sig').read()
     novos = ''.join(f'\t\t<LuaContext FileName="{f}" ID="{i}" Hidden="0"/>\n' for f, i in CONTEXTOS)
     marca = '\t\t<LuaContext FileName="Assets/UI/InGame/TopPanel"'
