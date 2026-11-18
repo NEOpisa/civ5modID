@@ -19,7 +19,7 @@ if grep -rqi "ctrl\|editor do mundo" "$PACOTE/LEIA-ME.md" "$PACOTE/eradasideolog
 	exit 1
 fi
 rm -f "$HOME/Downloads/EraDasIdeologias-Civ5.zip" "$HOME/Downloads/EraDasIdeologias-DLC.zip"
-(cd "$AQUI/saida" && python3 -c "import shutil; shutil.make_archive('$HOME/Downloads/EraDasIdeologias-DLC', 'zip', '.', 'EraDasIdeologias-$so')")
+(cd "$AQUI/saida" && python3 -c "import shutil; shutil.make_archive('$HOME/Downloads/EraDasIdeologias-DLC', 'zip', '.', 'EraDasIdeologias')")
 for so in Windows Linux; do
 	Z="$AQUI/saida/zip-$so/EraDasIdeologias-$so"
 	rm -rf "$AQUI/saida/zip-$so"
