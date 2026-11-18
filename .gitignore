@@ -1,3 +1,4 @@
 saida/
 __pycache__/
 ferramentas/base/*.db
+X.lua
