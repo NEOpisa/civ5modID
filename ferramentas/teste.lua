@@ -289,12 +289,12 @@ LuaEvents.NVG_Pedir({ a = "EVOLUIR", p = 0, t = R("POLICY_BRANCH_RATIONALISM"), 
 ok(not Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_E_POSITIVISMO")), "passou do limite de 4")
 
 LuaEvents.NVG_Pedir({ a = "IDEOLOGIA", p = 0, t = R("POLICY_BRANCH_NVG_I_COMUNISMO_ESTRATOCRACIA") })
-ok(Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_I_COMUNISMO_ESTRATOCRACIA")), "editor não forçou ideologia")
+ok(Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_I_COMUNISMO_ESTRATOCRACIA")), "rede não forçou ideologia")
 ok(not Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_I_MONARQUIA_CONST_ABSOLUTISMO")), "ideologia antiga continuou")
 ok(not Players[0]:HasPolicy(P("POLICY_NVG_I_MONARQUIA_CONST_ABSOLUTISMO")), "abertura antiga continuou")
 
 LuaEvents.NVG_Pedir({ a = "EVOLUCAO", p = 0, t = R("POLICY_BRANCH_NVG_E_PATRIMONIALISMO") })
-ok(Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_E_PATRIMONIALISMO")) and not Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_E_ABSOLUTISMO")), "editor não trocou a evolução")
+ok(Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_E_PATRIMONIALISMO")) and not Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_E_ABSOLUTISMO")), "rede não trocou a evolução")
 
 quadro()
 local feitos = 0
@@ -314,8 +314,8 @@ for _, a in ipairs(acoes) do
 	LuaEvents.NVG_BSG_Pedir({ a = a, p = 0, q = alvo2, v = 3, t = t, x = x, y = y })
 end
 quadro()
-ok(feitos == #acoes, "ações do editor: " .. feitos .. " de " .. #acoes)
-ok(Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_I_FASCISMO_CESARISMO")), "editor não trocou ideologia")
+ok(feitos == #acoes, "ações de rede: " .. feitos .. " de " .. #acoes)
+ok(Players[0]:IsPolicyBranchUnlocked(R("POLICY_BRANCH_NVG_I_FASCISMO_CESARISMO")), "rede não trocou ideologia")
 
 emRede = true
 local enviado
