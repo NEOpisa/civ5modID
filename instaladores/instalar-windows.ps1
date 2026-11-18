@@ -42,13 +42,55 @@ if (-not $jogo) {
 	exit 1
 }
 
-$destino = Join-Path $jogo "Assets\DLC\$pasta"
-if (Test-Path $destino) { Remove-Item $destino -Recurse -Force }
+$dlc = Join-Path $jogo "Assets\DLC"
+$velho = Join-Path $dlc $pasta
+if (Test-Path $velho) { Remove-Item $velho -Recurse -Force }
+$xp2 = Join-Path $dlc "Expansion2"
+$pkg = Join-Path $xp2 "Expansion2.civ5pkg"
+if (-not (Test-Path $pkg)) {
+	Write-Host "Brave New World nao encontrado em: $xp2"
+	exit 1
+}
+$trocados = @("UI\InGame\Popups\SocialPolicyPopup.lua", "UI\InGame\Popups\SocialPolicyPopup.xml", "UI\InGame\WorldView\DiploCorner.lua", "UI\InGame\InGame.xml")
+$bak = Join-Path $xp2 "nvg_original"
+if (Test-Path $bak) {
+	foreach ($f in $trocados) {
+		$o = Join-Path $bak ((Split-Path $f -Leaf) + ".orig")
+		if (Test-Path $o) { Copy-Item $o (Join-Path $xp2 $f) -Force }
+	}
+	Copy-Item (Join-Path $bak "Expansion2.civ5pkg.orig") $pkg -Force
+}
+foreach ($d in @((Join-Path $xp2 "Gameplay\XML\nvg"), (Join-Path $xp2 "UI\InGame\nvg"), $bak)) {
+	if (Test-Path $d) { Remove-Item $d -Recurse -Force }
+}
 if ($remover) {
-	Write-Host "Removido de: $destino"
+	Write-Host "Removido de: $xp2"
 } else {
-	Copy-Item $origem $destino -Recurse
-	Write-Host "Instalado em: $destino"
+	New-Item -ItemType Directory -Path $bak | Out-Null
+	Copy-Item $pkg (Join-Path $bak "Expansion2.civ5pkg.orig")
+	foreach ($f in $trocados) { Copy-Item (Join-Path $xp2 $f) (Join-Path $bak ((Split-Path $f -Leaf) + ".orig")) }
+	$gp = Join-Path $xp2 "Gameplay\XML\nvg"
+	$ui = Join-Path $xp2 "UI\InGame"
+	New-Item -ItemType Directory -Path $gp | Out-Null
+	New-Item -ItemType Directory -Path (Join-Path $ui "nvg") | Out-Null
+	Copy-Item (Join-Path $origem "gameplay\xml\nvg_dados.xml") $gp
+	Copy-Item (Join-Path $origem "gameplay\xml\text\en_us\nvg_textos.xml") $gp
+	Copy-Item (Join-Path $origem "ui\socialpolicypopup.lua") (Join-Path $ui "Popups\SocialPolicyPopup.lua") -Force
+	Copy-Item (Join-Path $origem "ui\socialpolicypopup.xml") (Join-Path $ui "Popups\SocialPolicyPopup.xml") -Force
+	Copy-Item (Join-Path $origem "ui\diplocorner.lua") (Join-Path $ui "WorldView\DiploCorner.lua") -Force
+	Copy-Item (Join-Path $origem "ui\ingame.xml") (Join-Path $ui "InGame.xml") -Force
+	$fixos = @("socialpolicypopup.lua", "socialpolicypopup.xml", "diplocorner.lua", "ingame.xml")
+	Get-ChildItem (Join-Path $origem "ui") -File | Where-Object { $fixos -notcontains $_.Name.ToLower() } | ForEach-Object { Copy-Item $_.FullName (Join-Path $ui "nvg") }
+	$texto = [IO.File]::ReadAllText($pkg)
+	$m = [regex]::Match($texto, '(?m)^([ \t]*)<!-- Directories -->')
+	if (-not $m.Success) {
+		Write-Host "Nao consegui alterar $pkg"
+		exit 1
+	}
+	$r = $m.Groups[1].Value
+	$ins = "$r<GameData>nvg_dados.xml</GameData><!-- NVG -->`r`n$r<TextData>nvg_textos.xml</TextData><!-- NVG -->`r`n"
+	[IO.File]::WriteAllText($pkg, $texto.Insert($m.Index, $ins), (New-Object System.Text.UTF8Encoding $false))
+	Write-Host "Instalado no Brave New World: $xp2"
 }
 
 $docs = [Environment]::GetFolderPath("MyDocuments")

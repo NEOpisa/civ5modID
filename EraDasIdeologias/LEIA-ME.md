@@ -5,7 +5,7 @@ Precisa do **Brave New World**. Funciona sozinho, em hotseat e online. Online, t
 Partidas salvas da versão 1 não abrem na 2.0.
 
 ## Instalação (DLC, para jogar online)
-O mod é instalado como **DLC**: não usa o menu MODS, então o **Multijogador normal** funciona. Todos os jogadores precisam instalar a mesma versão.
+O mod é instalado dentro do **Brave New World**: não usa o menu MODS, então o **Multijogador normal** funciona. Todos os jogadores precisam instalar a mesma versão. Se a Steam "verificar os arquivos" do jogo, instale de novo.
 
 - **Linux** (versão nativa ou Windows pelo Proton): abra um terminal nesta pasta e rode `sh instalar-linux.sh`
 - **Windows:** dois cliques em `instalar-windows.bat`

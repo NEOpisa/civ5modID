@@ -1,6 +1,6 @@
 # Era das Ideologias — Civilization V
 
-Mod para **Civilization V: Brave New World**, instalado como DLC para funcionar no **Multijogador normal**, sem o menu MODS.
+Mod para **Civilization V: Brave New World**, instalado dentro do Brave New World para funcionar no **Multijogador normal**, sem o menu MODS.
 
 ## Baixar
 
@@ -20,7 +20,7 @@ Todos os jogadores precisam da mesma versão. Se a Steam verificar os arquivos d
 
 ## Jogar
 
-Um Jogador ou Multijogador normal. Em Configuração Avançada, a DLC **Era das Ideologias** vem marcada.
+Um Jogador ou Multijogador normal: com o Brave New World ativo, o mod já vem junto.
 
 A versão nativa do Linux só joga online com Linux/Mac nativos; pelo Proton, joga com quem está no Windows.
 
