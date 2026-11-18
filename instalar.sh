@@ -19,14 +19,14 @@ if grep -rqi "ctrl\|editor do mundo" "$PACOTE/LEIA-ME.md" "$PACOTE/eradasideolog
 	exit 1
 fi
 rm -f "$HOME/Downloads/EraDasIdeologias-Civ5.zip" "$HOME/Downloads/EraDasIdeologias-DLC.zip"
-(cd "$AQUI/saida" && python3 -c "import shutil; shutil.make_archive('$HOME/Downloads/EraDasIdeologias-DLC', 'zip', '.', 'EraDasIdeologias')")
+(cd "$AQUI/saida" && python3 -c "import shutil; shutil.make_archive('$HOME/Downloads/EraDasIdeologias-DLC', 'zip', '.', 'EraDasIdeologias-$so')")
 for so in Windows Linux; do
-	Z="$AQUI/saida/zip-$so/EraDasIdeologias"
+	Z="$AQUI/saida/zip-$so/EraDasIdeologias-$so"
 	rm -rf "$AQUI/saida/zip-$so"
 	mkdir -p "$Z"
 	cp -r "$PACOTE/eradasideologias" "$PACOTE/LEIA-ME.md" "$Z/"
 	if [ "$so" = Windows ]; then cp "$PACOTE/instalar-windows.bat" "$PACOTE/instalar-windows.ps1" "$Z/"; else cp "$PACOTE/instalar-linux.sh" "$Z/"; fi
-	(cd "$AQUI/saida/zip-$so" && python3 -c "import shutil; shutil.make_archive('$AQUI/saida/EraDasIdeologias-$so', 'zip', '.', 'EraDasIdeologias')")
+	(cd "$AQUI/saida/zip-$so" && python3 -c "import shutil; shutil.make_archive('$AQUI/saida/EraDasIdeologias-$so', 'zip', '.', 'EraDasIdeologias-$so')")
 done
 sh "$PACOTE/instalar-linux.sh"
 echo "Zip para os amigos: $HOME/Downloads/EraDasIdeologias-DLC.zip"
