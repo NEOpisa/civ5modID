@@ -1,10 +1,10 @@
-# Era das Ideologias 2.0 (Civilization V)
+# Era das Ideologias 2.3 (Civilization V)
 
 Precisa do **Brave New World**. Funciona sozinho, em hotseat e online. Online, todos precisam da mesma versão.
 
-Partidas salvas da versão 1 não abrem na 2.0.
+Partidas salvas da versão 1 não abrem nas versões 2.x.
 
-## Instalação (DLC, para jogar online)
+## Instalação
 O mod é instalado dentro do **Brave New World**: não usa o menu MODS, então o **Multijogador normal** funciona. Todos os jogadores precisam instalar a mesma versão. Se a Steam "verificar os arquivos" do jogo, instale de novo.
 
 - **Linux** (versão nativa ou Windows pelo Proton): abra um terminal nesta pasta e rode `sh instalar-linux.sh`
@@ -14,7 +14,7 @@ Para remover: `sh instalar-linux.sh --remover` ou `instalar-windows.bat remover`
 
 O instalador tira a versão antiga do menu MODS, se existir, para o jogo não carregar duas vezes, e limpa o cache do jogo. Se a Steam "verificar os arquivos" do Civ V, instale de novo.
 
-**Para jogar:** Multijogador (ou Um Jogador) normal, sem passar pelo MODS. Em Configuração Avançada, a DLC **Era das Ideologias** precisa estar marcada (vem marcada).
+**Para jogar:** Multijogador (ou Um Jogador) normal, sem passar pelo MODS, com o Brave New World ativo.
 
 A versão nativa do Linux só joga online com quem também usa a nativa (Linux/Mac). Quem usa o Proton joga com quem está no Windows.
 
