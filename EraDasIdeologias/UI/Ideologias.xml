@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context ColorSet="Beige_Black_Alpha" Font="TwCenMT16" FontStyle="Shadow">
+	<Instance Name="Cartao">
+		<Button ID="Raiz" Anchor="L,T" Size="214,96" StateOffsetIncrement="0,0">
+			<Box Anchor="L,T" Size="214,96" Color="12,22,36,210"/>
+			<Image ID="Faixa" Anchor="L,T" Size="214,96" Texture="SocialPoliciesFreedom.dds" Color="255,255,255,70"/>
+			<ShowOnMouseOver>
+				<Grid Anchor="L,T" Size="214,96" Style="Grid9FrameTurnsHL"/>
+			</ShowOnMouseOver>
+			<Grid ID="Selecao" Anchor="L,T" Size="214,96" Style="Grid9FrameTurns" Hidden="1"/>
+			<Image ID="Icone" Anchor="L,C" Offset="6,0" Size="64,64" Texture="SocialPolicies512.dds"/>
+			<Stack ID="Textos" Anchor="L,C" Offset="74,0" StackGrowth="Bottom" Padding="3">
+				<Label ID="Nome" Anchor="L,T" Font="TwCenMT18" WrapWidth="134"/>
+				<Label ID="Situacao" Anchor="L,T" Font="TwCenMT14" WrapWidth="134"/>
+			</Stack>
+		</Button>
+	</Instance>
+	<Instance Name="Icone">
+		<GridButton ID="Botao" Anchor="L,T" Size="48,48">
+			<GridData Style="Grid9FrameButtons"/>
+			<Image ID="Imagem" Anchor="C,C" Size="64,64" Texture="SocialPolicies512.dds"/>
+		</GridButton>
+	</Instance>
+
+	<Box ID="Fundo" Anchor="C,C" Size="Full,Full" Color="0,0,0,160" ConsumeMouse="1">
+
+		<Grid ID="Janela" Anchor="C,C" Size="1000,720" Style="Grid9DetailFive140" ConsumeMouse="1" Hidden="1">
+			<Label Style="MenuTitleCaption" String="IDEOLOGIAS"/>
+			<Label ID="Resumo" Anchor="C,T" Offset="0,46" Font="TwCenMT16" WrapWidth="940" String=""/>
+			<Image Anchor="C,T" Offset="0,88" Texture="HorizontalTrim.dds" Size="960,5"/>
+			<Container ID="Cartoes" Anchor="L,T" Offset="24,100" Size="440,520"/>
+
+			<Container Anchor="R,T" Offset="24,100" Size="500,540">
+				<Stack Anchor="L,T" Offset="0,0" StackGrowth="Right" Padding="6">
+					<GridButton ID="Via1" Size="247,30" Style="SmallButton" String=""/>
+					<GridButton ID="Via2" Size="247,30" Style="SmallButton" String=""/>
+				</Stack>
+				<Box Anchor="L,T" Offset="0,40" Size="190,290" Color="0,0,0,255">
+					<Image ID="PainelFundo" Anchor="L,T" Size="190,290" Texture="SocialPoliciesFreedom.dds"/>
+					<Image Anchor="L,T" Size="190,290" Color="255,255,255,150" Texture="Assets/UI/Art/Icons/SocialPoliciesBranchBlackMask.dds"/>
+					<Image Anchor="L,T" Size="190,290" Texture="Assets/UI/Art/Icons/SocialPoliciesTrim.dds"/>
+					<Stack ID="PainelTopo" Anchor="C,T" Offset="0,8" StackGrowth="Bottom" Padding="4">
+						<Label ID="PainelTitulo" Anchor="C,T" Font="TwCenMT18" FontStyle="Shadow" WrapWidth="180"/>
+						<Label ID="PainelAbertura" Anchor="C,T" Font="TwCenMT14" WrapWidth="176"/>
+					</Stack>
+					<Image ID="Cano1" Anchor="L,T" Offset="31,154" Size="19,46" Texture="Connect_V.dds"/>
+					<Image ID="Cano2" Anchor="L,T" Offset="141,154" Size="19,46" Texture="Connect_V.dds"/>
+					<Container ID="PainelIcones" Anchor="L,T" Offset="0,0" Size="190,290"/>
+					<Label ID="PainelFinal" Anchor="C,B" Offset="0,12" Font="TwCenMT14" WrapWidth="176"/>
+				</Box>
+				<Label ID="DetNome" Anchor="L,T" Offset="206,42" Font="TwCenMT22" FontStyle="Shadow" WrapWidth="290"/>
+				<ScrollPanel ID="DetRolagem" Anchor="L,T" Offset="206,74" Size="276,256" Vertical="1">
+					<Label ID="DetTexto" Anchor="L,T" Font="TwCenMT14" WrapWidth="262"/>
+					<ScrollBar Style="VertSlider" Anchor="R,C" AnchorSide="O,I" Length="220"/>
+					<UpButton Style="ScrollBarUp" Anchor="R,T" AnchorSide="O,I"/>
+					<DownButton Style="ScrollBarDown" Anchor="R,B" AnchorSide="O,I"/>
+				</ScrollPanel>
+				<Label ID="Cultura" Anchor="L,T" Offset="0,344" Font="TwCenMT16" WrapWidth="490"/>
+				<GridButton ID="Acao" Anchor="C,T" Offset="0,380" Size="320,42" Style="BaseButton" String=""/>
+				<Label ID="AcaoDica" Anchor="C,T" Offset="0,430" Font="TwCenMT14" WrapWidth="480"/>
+			</Container>
+
+			<Label ID="Status" Anchor="C,B" Offset="0,70" Font="TwCenMT18" WrapWidth="900" String=""/>
+			<GridButton ID="Fechar" Anchor="C,B" Offset="0,22" Size="200,36" Style="BaseButton" String="Fechar"/>
+		</Grid>
+
+		<Grid ID="Evolucao" Anchor="C,C" Size="920,600" Style="Grid9DetailFive140" ConsumeMouse="1" Hidden="1">
+			<Label ID="EvoTitulo" Style="MenuTitleCaption" String=""/>
+			<Label ID="EvoSub" Anchor="C,T" Offset="0,50" Font="TwCenMT16" WrapWidth="860" String=""/>
+			<Grid Anchor="L,T" Offset="22,104" Size="430,424" Style="Grid9FrameTurns">
+				<Box Anchor="L,T" Offset="10,10" Size="190,290" Color="0,0,0,255">
+					<Image ID="Opcao1Fundo" Anchor="L,T" Size="190,290" Texture="Assets/UI/Art/Icons/SocialPoliciesTradition.dds"/>
+					<Image Anchor="L,T" Size="190,290" Color="255,255,255,140" Texture="Assets/UI/Art/Icons/SocialPoliciesBranchBlackMask.dds"/>
+					<Image Anchor="L,T" Size="190,290" Texture="Assets/UI/Art/Icons/SocialPoliciesTrim.dds"/>
+					<Label ID="Opcao1Nome" Anchor="C,T" Offset="0,10" Font="TwCenMT20" FontStyle="Shadow" WrapWidth="180"/>
+					<Container ID="Opcao1Icones" Anchor="L,T" Offset="0,86" Size="190,204"/>
+				</Box>
+				<ScrollPanel ID="Opcao1Rolagem" Anchor="L,T" Offset="210,12" Size="196,350" Vertical="1">
+					<Label ID="Opcao1Texto" Anchor="L,T" Font="TwCenMT14" WrapWidth="190"/>
+					<ScrollBar Style="VertSlider" Anchor="R,C" AnchorSide="O,I" Length="314"/>
+					<UpButton Style="ScrollBarUp" Anchor="R,T" AnchorSide="O,I"/>
+					<DownButton Style="ScrollBarDown" Anchor="R,B" AnchorSide="O,I"/>
+				</ScrollPanel>
+				<GridButton ID="Opcao1" Anchor="C,B" Offset="0,14" Size="300,40" Style="BaseButton" String=""/>
+			</Grid>
+			<Grid Anchor="R,T" Offset="22,104" Size="430,424" Style="Grid9FrameTurns">
+				<Box Anchor="L,T" Offset="10,10" Size="190,290" Color="0,0,0,255">
+					<Image ID="Opcao2Fundo" Anchor="L,T" Size="190,290" Texture="Assets/UI/Art/Icons/SocialPoliciesTradition.dds"/>
+					<Image Anchor="L,T" Size="190,290" Color="255,255,255,140" Texture="Assets/UI/Art/Icons/SocialPoliciesBranchBlackMask.dds"/>
+					<Image Anchor="L,T" Size="190,290" Texture="Assets/UI/Art/Icons/SocialPoliciesTrim.dds"/>
+					<Label ID="Opcao2Nome" Anchor="C,T" Offset="0,10" Font="TwCenMT20" FontStyle="Shadow" WrapWidth="180"/>
+					<Container ID="Opcao2Icones" Anchor="L,T" Offset="0,86" Size="190,204"/>
+				</Box>
+				<ScrollPanel ID="Opcao2Rolagem" Anchor="L,T" Offset="210,12" Size="196,350" Vertical="1">
+					<Label ID="Opcao2Texto" Anchor="L,T" Font="TwCenMT14" WrapWidth="190"/>
+					<ScrollBar Style="VertSlider" Anchor="R,C" AnchorSide="O,I" Length="314"/>
+					<UpButton Style="ScrollBarUp" Anchor="R,T" AnchorSide="O,I"/>
+					<DownButton Style="ScrollBarDown" Anchor="R,B" AnchorSide="O,I"/>
+				</ScrollPanel>
+				<GridButton ID="Opcao2" Anchor="C,B" Offset="0,14" Size="300,40" Style="BaseButton" String=""/>
+			</Grid>
+			<GridButton ID="Depois" Anchor="C,B" Offset="0,22" Size="220,36" Style="BaseButton" String="Decidir depois"/>
+		</Grid>
+
+		<Box ID="Confirmar" Anchor="C,C" Size="Full,Full" Color="0,0,0,120" ConsumeMouse="1" Hidden="1">
+			<Grid ID="ConfirmarCaixa" Anchor="C,C" Size="620,270" Style="Grid9DetailFive140" ConsumeMouse="1">
+				<ScrollPanel ID="ConfirmarRolagem" Anchor="C,T" Offset="-8,40" Size="560,140" Vertical="1">
+					<Label ID="ConfirmarTexto" Anchor="L,T" Font="TwCenMT18" WrapWidth="550" String=""/>
+					<ScrollBar ID="ConfirmarBarra" Style="VertSlider" Anchor="R,C" AnchorSide="O,I" Length="104"/>
+					<UpButton Style="ScrollBarUp" Anchor="R,T" AnchorSide="O,I"/>
+					<DownButton Style="ScrollBarDown" Anchor="R,B" AnchorSide="O,I"/>
+				</ScrollPanel>
+				<Stack Anchor="C,B" Offset="0,26" StackGrowth="Right" Padding="16">
+					<GridButton ID="Sim" Size="180,38" Style="BaseButton" String="Confirmar"/>
+					<GridButton ID="Nao" Size="180,38" Style="BaseButton" String="Cancelar"/>
+				</Stack>
+			</Grid>
+		</Box>
+	</Box>
+</Context>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="a7f3c2d1-5e8b-4c6a-9f20-3b1d7e4a9c55" version="2">
+  <Properties>
+    <Name>Era das Ideologias</Name>
+    <Teaser>Arvores que evoluem, 10 ideologias, religiao turbinada e eventos mundiais</Teaser>
+    <Description>Completar uma arvore de politica libera 1 de 2 evolucoes; completar a evolucao libera uma ideologia (10 no total, com versoes diferentes conforme a origem). Guerra Fria, revolucoes, 12 eventos mundiais e 7 crencas novas.</Description>
+    <Authors>NEO</Authors>
+    <HideSetupGame>0</HideSetupGame>
+    <AffectsSavedGames>1</AffectsSavedGames>
+    <MinCompatibleSaveVersion>2</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>1</SupportsSinglePlayer>
+    <SupportsMultiplayer>1</SupportsMultiplayer>
+    <SupportsHotSeat>1</SupportsHotSeat>
+    <SupportsMac>1</SupportsMac>
+    <ReloadAudioSystem>0</ReloadAudioSystem>
+    <ReloadLandmarkSystem>0</ReloadLandmarkSystem>
+    <ReloadStrategicViewSystem>0</ReloadStrategicViewSystem>
+    <ReloadUnitSystem>0</ReloadUnitSystem>
+  </Properties>
+  <Dependencies />
+  <References />
+  <Blocks />
+  <Files>
+    <File md5="6A22F5AAD8DF26BF26AB134A1F25C32F" import="0">sql/dados.sql</File>
+    <File md5="AF07CE3D05ABEE4EFB578E2488F8ECC9" import="0">sql/textos.sql</File>
+    <File md5="5635A04EEFA5A6B6330D543864762915" import="1">lua/nvgdados.lua</File>
+    <File md5="E04ED5A6D65E0FCF3BD4311D3C00F060" import="1">lua/eradasideologias.lua</File>
+    <File md5="E0D5779A78F0BBDD078DB90C337B94FF" import="1">lua/eradasideologias.xml</File>
+    <File md5="5256BDC7E7D783E28476506E59494B50" import="1">ui/boraseusg.lua</File>
+    <File md5="8ED0C4136B5D34C953B2C139516E7459" import="1">ui/boraseusg.xml</File>
+    <File md5="723B0E6952064BF2E49314CB5860DA42" import="1">ui/ideologias.lua</File>
+    <File md5="1B253F3B699E9C08B0A88C5DD10FBD25" import="1">ui/ideologias.xml</File>
+    <File md5="4B54623B2858CE94E51C5876D2689476" import="1">telas/socialpolicypopup.lua</File>
+    <File md5="34F8161D28DB1D16DCC8B1116A0D4DC2" import="1">telas/socialpolicypopup.xml</File>
+    <File md5="03B0EFAB90FB40BF391E9C98A6AF536E" import="1">telas/diplocorner.lua</File>
+  </Files>
+  <Actions>
+    <OnModActivated>
+      <UpdateDatabase>sql/dados.sql</UpdateDatabase>
+      <UpdateDatabase>sql/textos.sql</UpdateDatabase>
+    </OnModActivated>
+  </Actions>
+  <EntryPoints>
+    <EntryPoint type="InGameUIAddin" file="lua/eradasideologias.lua">
+      <Name>EraDasIdeologias</Name>
+      <Description>Regras do mod</Description>
+    </EntryPoint>
+    <EntryPoint type="InGameUIAddin" file="ui/boraseusg.lua">
+      <Name>Mundo</Name>
+      <Description>Interface</Description>
+    </EntryPoint>
+    <EntryPoint type="InGameUIAddin" file="ui/ideologias.lua">
+      <Name>Ideologias</Name>
+      <Description>Aba de ideologias e escolha de evolucao</Description>
+    </EntryPoint>
+  </EntryPoints>
+</Mod>

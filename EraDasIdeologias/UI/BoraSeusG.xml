@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context ConsumeMouse="0">
+	<Label ID="Escolhendo" Anchor="C,T" Offset="0,96" Font="TwCenMT24" FontStyle="Shadow" String="Clique num hexágono (Esc cancela)" Hidden="1"/>
+	<Box ID="Fundo" Anchor="C,C" Size="Full,Full" Color="0,0,0,120" ConsumeMouse="1" Hidden="1">
+		<Grid Anchor="C,C" Size="600,500" Style="Grid9DetailFive140" ConsumeMouse="1">
+			<Label Anchor="C,T" Offset="0,22" Font="TwCenMT24" String="Editor do mundo"/>
+			<Container Anchor="L,T" Offset="30,64" Size="540,30">
+				<Label Anchor="L,C" Font="TwCenMT18" String="Ação"/>
+				<PullDown ID="ListaAcao" Anchor="L,C" Offset="150,0" Style="GenericPullDown" ScrollThreshold="400" Size="380,27" SpaceForScroll="1"/>
+			</Container>
+			<Container Anchor="L,T" Offset="30,102" Size="540,30">
+				<Label Anchor="L,C" Font="TwCenMT18" String="Jogador alvo"/>
+				<PullDown ID="ListaAlvo" Anchor="L,C" Offset="150,0" Style="GenericPullDown" ScrollThreshold="400" Size="380,27" SpaceForScroll="1"/>
+			</Container>
+			<Container ID="LinhaAlvo2" Anchor="L,T" Offset="30,140" Size="540,30">
+				<Label ID="RotuloAlvo2" Anchor="L,C" Font="TwCenMT18" String="Jogador 2"/>
+				<PullDown ID="ListaAlvo2" Anchor="L,C" Offset="150,0" Style="GenericPullDown" ScrollThreshold="400" Size="380,27" SpaceForScroll="1"/>
+			</Container>
+			<Container ID="LinhaTipo" Anchor="L,T" Offset="30,178" Size="540,30">
+				<Label Anchor="L,C" Font="TwCenMT18" String="Tipo"/>
+				<PullDown ID="ListaTipo" Anchor="L,C" Offset="150,0" Style="GenericPullDown" ScrollThreshold="400" Size="380,27" SpaceForScroll="1"/>
+			</Container>
+			<Container ID="LinhaValor" Anchor="L,T" Offset="30,216" Size="540,30">
+				<Label ID="RotuloValor" Anchor="L,C" Font="TwCenMT18" String="Valor"/>
+				<Box Anchor="L,C" Offset="150,0" Size="140,28" Color="0,0,0,255">
+					<EditBox ID="Valor" EditMode="1" Anchor="C,C" Size="130,24" Font="TwCenMT20" MaxLength="7" CallOnChar="0"/>
+				</Box>
+			</Container>
+			<Container ID="LinhaHex" Anchor="L,T" Offset="30,254" Size="540,32">
+				<Label Anchor="L,C" Font="TwCenMT18" String="Hexágono"/>
+				<Label ID="HexTexto" Anchor="L,C" Offset="150,0" Font="TwCenMT18" String="nenhum"/>
+				<GridButton ID="EscolherHex" Anchor="L,C" Offset="270,0" Size="130,30" Style="SmallButton" String="No mapa"/>
+				<GridButton ID="HexSelecao" Anchor="L,C" Offset="405,0" Size="130,30" Style="SmallButton" String="Seleção"/>
+			</Container>
+			<Label ID="Dica" Anchor="L,T" Offset="30,298" Font="TwCenMT16" WrapWidth="540" String=""/>
+			<Label ID="Status" Anchor="C,B" Offset="0,76" Font="TwCenMT18" WrapWidth="540" String=""/>
+			<Stack Anchor="C,B" Offset="0,24" StackGrowth="Right" Padding="12">
+				<GridButton ID="Aplicar" Size="160,34" Style="BaseButton" String="APLICAR"/>
+				<GridButton ID="Fechar" Size="160,34" Style="BaseButton" String="Fechar"/>
+			</Stack>
+		</Grid>
+	</Box>
+</Context>
